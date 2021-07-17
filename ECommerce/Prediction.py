@@ -15,7 +15,7 @@ from nltk.stem import RSLPStemmer
 from sklearn.linear_model import LinearRegression
 from sklearn.model_selection import train_test_split
 
-for dirname, _, filenames in os.walk('e-commerce/'):
+for dirname, _, filenames in os.walk('/e-commerce/'):
   for filename in filenames:
     print(os.path.join(dirname, filename))
 
@@ -35,6 +35,7 @@ translation=pd.read_csv(raw_path + 'product_category_name_translation.csv')
 def split_base():
   x_treino, x_teste, y_treino, y_teste = train_test_split(x[['freight_value']], order_items.price, test_size = 0.7, random_state = 5)
   print(x_treino.shape)
+  return x_treino, x_teste, y_treino, y_teste
 
 # Treinando modelo
 regr = LinearRegression()
